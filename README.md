@@ -1,28 +1,34 @@
-## Micronaut 4.5.1 Documentation
+# Core API
 
-- [User Guide](https://docs.micronaut.io/4.5.1/guide/index.html)
-- [API Reference](https://docs.micronaut.io/4.5.1/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.5.1/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+## Description
 
-- [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
-- [GraalVM Gradle Plugin documentation](https://graalvm.github.io/native-build-tools/latest/gradle-plugin.html)
-- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
-## Feature micronaut-aot documentation
+`core-api` is the main service of the Finances Box application, developed using the [Micronaut](https://micronaut.io/)
+framework. This project is responsible for managing the core operations of the FinanceBox platform. It is built with *
+*Java 21** and uses **Gradle** as the build tool.
 
-- [Micronaut AOT documentation](https://micronaut-projects.github.io/micronaut-aot/latest/guide/)
+## Prerequisites
 
+Before you begin, ensure that you have the following tools installed in your development environment:
 
-## Feature serialization-jackson documentation
+- **Java 21**: You can download it
+  from [Oracle JDK](https://www.oracle.com/java/technologies/javase-jdk21-downloads.html) or use an OpenJDK
+  implementation.
+- **Gradle**: It's recommended to use version 8 or higher. You can install Gradle
+  from [here](https://gradle.org/install/).
 
-- [Micronaut Serialization Jackson Core documentation](https://micronaut-projects.github.io/micronaut-serialization/latest/guide/)
+## Project Setup
 
+### Clone the Repository
 
-## Feature ksp documentation
+Clone the `core-api` repository to your local machine:
 
-- [Micronaut Kotlin Symbol Processing (KSP) documentation](https://docs.micronaut.io/latest/guide/#kotlin)
+```bash
+git clone https://github.com/your-username/financesbox-core-api.git
+cd financesbox-core-api
+```
 
-- [https://kotlinlang.org/docs/ksp-overview.html](https://kotlinlang.org/docs/ksp-overview.html)
+## License
 
+This project is licensed under the terms of the MIT License. See the [LICENSE](LICENSE) file for more details.
 
+Additionally, please review the [Additional Terms](NOTICE.md) regarding commercial use and derivative works.
