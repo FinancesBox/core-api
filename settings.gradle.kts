@@ -1,4 +1,2 @@
-
-
-rootProject.name="core-api"
+rootProject.name = "core-api"
 
