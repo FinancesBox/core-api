@@ -1,6 +1,6 @@
 applicationType: default
 defaultPackage: com.financesbox
-testFramework: spock
+testFramework: kotest
 sourceLanguage: kotlin
 buildTool: gradle_kotlin
-features: [app-name, gradle, http-client-test, kotlin, kotlin-application, ksp, logback, micronaut-aot, micronaut-build, micronaut-http-validation, netty-server, properties, readme, serialization-jackson, shade, spock, static-resources]
+features: [ annotation-api, app-name, awaitility, data, data-jpa, github-workflow-ci, gradle, hibernate-jpa, http-client, jdbc-hikari, jul-to-slf4j, kotest, kotlin, kotlin-application, kotlin-extension-functions, ksp, liquibase, logback, micronaut-aop, micronaut-aot, micronaut-build, micronaut-http-validation, netty-server, openapi, postgres, readme, rxjava3, rxjava3-http-client, security-annotations, security-jwt, serialization-jackson, shade, static-resources, swagger-ui, test-resources, testcontainers, yaml, yaml-build ]
