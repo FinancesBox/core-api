@@ -42,6 +42,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
     implementation("org.slf4j:jul-to-slf4j")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+    implementation("org.mindrot:jbcrypt:0.4")
     compileOnly("io.micronaut.openapi:micronaut-openapi-annotations")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     runtimeOnly("org.postgresql:postgresql")
