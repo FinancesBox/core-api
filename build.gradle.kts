@@ -55,7 +55,7 @@ dependencies {
 
 
 application {
-    mainClass = "com.financesbox.ApplicationKt"
+    mainClass = "com.financesbox.shared.infrastructure.configuration.micronaut.api.ApplicationKt"
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("21")
