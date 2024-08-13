@@ -3,8 +3,8 @@
 ## Description
 
 `core-api` is the main service of the Finances Box application, developed using the [Micronaut](https://micronaut.io/)
-framework. This project is responsible for managing the core operations of the FinanceBox platform. It is built with *
-*Java 21** and uses **Gradle** as the build tool.
+framework. This project is responsible for managing the core operations of the FinanceBox platform. It is built with
+**Java 21** and uses **Gradle** as the build tool.
 
 ## Prerequisites
 
