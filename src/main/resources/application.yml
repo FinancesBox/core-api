@@ -11,17 +11,25 @@ micronaut:
         mapping: /swagger-ui/**
   security:
     authentication: bearer
+    enabled: false
     token:
       jwt:
         signatures:
           secret:
             generator:
               secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
+  command:
+    timeoutInMillis: ${MICRONAUT_COMMAND_TIMEOUT_IN_MILLIS:15000}
+
 datasources:
   default:
     driver-class-name: org.postgresql.Driver
     db-type: postgres
     dialect: POSTGRES
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:core}
+    username: ${POSTGRES_USERNAME:financesbox}
+    password: ${POSTGRES_PASSWORD:financesbox}
+
 liquibase:
   datasources:
     default:
@@ -32,3 +40,7 @@ jpa:
       hibernate:
         hbm2ddl:
           auto: none
+
+command.implementation: ${COMMAND_IMPLEMENTATION:MICRONAUT}
+query.implementation: ${QUERY_IMPLEMENTATION:MICRONAUT}
+event.implementation: ${EVENT_IMPLEMENTATION:MICRONAUT}

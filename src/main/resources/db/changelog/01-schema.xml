@@ -5,6 +5,63 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
-    <changeSet id="01" author="username">
+    <changeSet id="01" author="romanovich23">
+        <createTable tableName="users">
+            <column name="id" type="uuid">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_id_pk"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="roles">
+            <column name="id" type="serial">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="role_id_pk"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="users_roles">
+            <column name="id" type="uuid" defaultValueComputed="gen_random_uuid()">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_role_id_pk"/>
+            </column>
+            <column name="user_id" type="uuid">
+                <constraints nullable="false" references="users(id)" foreignKeyName="users_user_id_fk"/>
+            </column>
+            <column name="role_id" type="serial">
+                <constraints nullable="false" references="roles(id)" foreignKeyName="roles_role_id_fk"/>
+            </column>
+            <column name="created_at" type="TIMESTAMP" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <insert tableName="roles">
+            <column name="id" value="1"/>
+            <column name="name" value="ADMIN"/>
+            <column name="created_at" valueComputed="now()"/>
+            <column name="updated_at" valueComputed="now()"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>
