@@ -116,6 +116,7 @@ kover {
 fun isTestingTask(name: String) = name.contains("test", true)
         || name.contains("report", true)
         || name.contains("verify", true)
+        || name.equals("build", true)
 
 val isTesting = gradle.startParameter.taskNames.any(::isTestingTask)
 

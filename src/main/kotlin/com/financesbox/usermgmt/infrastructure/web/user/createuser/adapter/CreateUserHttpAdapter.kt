@@ -6,11 +6,14 @@ import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateU
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserResponseModel
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.port.CreateUserPort
 import io.micronaut.http.HttpStatus
+import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Post
 import io.micronaut.http.annotation.Status
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.media.Content
+import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
@@ -22,7 +25,14 @@ class CreateUserHttpAdapter(private val commandBus: CommandBus) : CreateUserPort
     @Post("/users")
     @Status(HttpStatus.CREATED)
     @Operation(summary = "Create a new user")
-    @ApiResponse(responseCode = "201", description = "User created")
+    @ApiResponse(
+        responseCode = "201",
+        description = "User created",
+        content = [Content(
+            mediaType = MediaType.APPLICATION_JSON,
+            schema = Schema(implementation = CreateUserResponseModel::class)
+        )]
+    )
     @ApiResponse(responseCode = "409", description = "User already exists")
     @ApiResponse(responseCode = "500", description = "Unexpected error")
     override fun createUser(@Body @Valid request: CreateUserRequestModel): CreateUserResponseModel {

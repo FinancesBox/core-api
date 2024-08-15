@@ -29,6 +29,3 @@ jobs:
         uses: gradle/gradle-build-action@v2.2.0
         with:
           arguments: build
-
-      - name: Run tests & check coverage
-        run: ./gradlew koverVerify
