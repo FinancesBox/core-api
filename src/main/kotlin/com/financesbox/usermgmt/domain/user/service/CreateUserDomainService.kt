@@ -1,38 +1,41 @@
 package com.financesbox.usermgmt.domain.user.service
 
+import com.financesbox.shared.domain.service.DomainService
 import com.financesbox.usermgmt.domain.user.exception.UserAlreadyExistsDomainExceptionUnsupported
 import com.financesbox.usermgmt.domain.user.exception.UserRolesMismatchDomainException
 import com.financesbox.usermgmt.domain.user.model.User
 import com.financesbox.usermgmt.domain.user.repository.UserRepository
 import com.financesbox.usermgmt.domain.user.repository.UserRoleRepository
+import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import java.time.Instant
 import java.util.*
 
 @Singleton
-class UserCreationDomainService(
-    private val userRepository: UserRepository,
-    private val userRoleRepository: UserRoleRepository
-) {
+class CreateUserDomainService : DomainService<CreateUserDTO, User> {
+
+    @Inject
+    private lateinit var userRepository: UserRepository
+
+    @Inject
+    private lateinit var userRoleRepository: UserRoleRepository
 
     /**
      * Validates and creates a user
      */
-    fun create(
-        name: String, email: String, password: String, roles: List<String>
-    ): User {
-        require(userRepository.findByName(name).isEmpty && userRepository.findByEmail(email).isEmpty) {
+    override fun execute(dto: CreateUserDTO): User {
+        require(userRepository.findByName(dto.name).isEmpty && userRepository.findByEmail(dto.email).isEmpty) {
             throw UserAlreadyExistsDomainExceptionUnsupported()
         }
-        val rolesFound = userRoleRepository.findByNameList(roles)
-        require(rolesFound.size == roles.size) {
+        val rolesFound = userRoleRepository.findByNameList(dto.roles)
+        require(rolesFound.size == dto.roles.size) {
             throw UserRolesMismatchDomainException("Expected ${rolesFound.size} roles, but found ${rolesFound.size}.")
         }
         val user = User(
             id = UUID.randomUUID(),
-            name = name,
-            email = email,
-            password = password,
+            name = dto.name,
+            email = dto.email,
+            password = dto.password,
             roles = rolesFound,
             createdAt = Instant.now(),
             updatedAt = Instant.now()

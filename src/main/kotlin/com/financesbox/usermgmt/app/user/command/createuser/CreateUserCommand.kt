@@ -1,4 +1,4 @@
-package com.financesbox.usermgmt.app.user.command.usercreation
+package com.financesbox.usermgmt.app.user.command.createuser
 
 import com.financesbox.shared.application.cqs.command.Command
 import com.financesbox.usermgmt.domain.user.event.UserCreatedEvent

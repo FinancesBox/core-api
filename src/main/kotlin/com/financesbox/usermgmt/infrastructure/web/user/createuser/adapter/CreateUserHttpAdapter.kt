@@ -1,7 +1,7 @@
 package com.financesbox.usermgmt.infrastructure.web.user.createuser.adapter
 
 import com.financesbox.shared.application.cqs.command.CommandBus
-import com.financesbox.usermgmt.app.user.command.usercreation.CreateUserCommand
+import com.financesbox.usermgmt.app.user.command.createuser.CreateUserCommand
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserRequestModel
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserResponseModel
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.port.CreateUserPort
@@ -17,11 +17,11 @@ import jakarta.validation.Valid
 
 @Controller("/api/v1")
 @Tag(name = "Users")
-open class CreateUserHttpAdapter(private val commandBus: CommandBus) : CreateUserPort {
+class CreateUserHttpAdapter(private val commandBus: CommandBus) : CreateUserPort {
 
     @Post("/users")
     @Status(HttpStatus.CREATED)
-    @Operation(summary = "Create a new investor")
+    @Operation(summary = "Create a new user")
     @ApiResponse(responseCode = "201", description = "User created")
     @ApiResponse(responseCode = "409", description = "User already exists")
     @ApiResponse(responseCode = "500", description = "Unexpected error")

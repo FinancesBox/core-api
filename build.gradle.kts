@@ -1,13 +1,13 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.0.10"
-    id("org.jetbrains.kotlin.plugin.allopen") version "2.0.10"
-    id("org.jetbrains.kotlin.plugin.jpa") version "2.0.10"
     id("com.google.devtools.ksp") version "2.0.10-1.0.24"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.4.2"
     id("io.micronaut.test-resources") version "4.4.2"
     id("io.micronaut.aot") version "4.4.2"
     id("org.jetbrains.kotlinx.kover") version "0.8.3"
+    kotlin("plugin.allopen") version "2.0.10"
+    kotlin("plugin.jpa") version "2.0.10"
+    kotlin("jvm") version "2.0.10"
 }
 
 version = "0.1"
@@ -16,6 +16,15 @@ group = "com.financesbox"
 val kotlinVersion = project.properties.get("kotlinVersion")
 repositories {
     mavenCentral()
+}
+
+sourceSets {
+    val integrationTest by creating {
+        kotlin.srcDir("src/integration-test/kotlin")
+        resources.srcDir("src/integration-test/resources")
+        compileClasspath += sourceSets["main"].output + configurations["testCompileClasspath"]
+        runtimeClasspath += sourceSets["main"].output + configurations["testRuntimeClasspath"]
+    }
 }
 
 dependencies {
@@ -98,12 +107,38 @@ kover {
         }
         verify {
             rule {
-                minBound(30)
+                minBound(75)
             }
         }
     }
 }
 
+fun isTestingTask(name: String) = name.contains("test", true)
+        || name.contains("report", true)
+        || name.contains("verify", true)
+
+val isTesting = gradle.startParameter.taskNames.any(::isTestingTask)
+
+if (isTesting) allOpen {
+    annotation("jakarta.inject.Singleton")
+    annotation("io.micronaut.context.annotation.Bean")
+    annotation("io.micronaut.context.annotation.Factory")
+    annotation("io.micronaut.aop.Around")
+}
+
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "21"
+}
+
+tasks.register<Test>("integrationTest") {
+    description = "Runs the integration tests."
+    group = "verification"
+    testClassesDirs = sourceSets["integrationTest"].output.classesDirs
+    classpath = sourceSets["integrationTest"].runtimeClasspath
+    shouldRunAfter("test")
+    useJUnitPlatform()
+}
+
+tasks.named("check") {
+    dependsOn("integrationTest")
 }
