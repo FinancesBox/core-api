@@ -1,13 +1,12 @@
-package com.financesbox.usermgmt.infrastructure.persistence.jpa.user.mapper
+package com.financesbox.usermgmt.infrastructure.persistence.user.mapper
 
 import com.financesbox.shared.infrastructure.persistence.mapper.Mapper
 import com.financesbox.usermgmt.domain.user.model.User
-import com.financesbox.usermgmt.infrastructure.persistence.jpa.user.entity.UserEntity
-import jakarta.inject.Inject
+import com.financesbox.usermgmt.infrastructure.persistence.user.entity.UserEntity
 import jakarta.inject.Singleton
 
 @Singleton
-class UserMapper(@Inject private val userRoleMapper: UserRoleMapper) : Mapper<UserEntity, User> {
+class UserMapper(private val userRoleMapper: UserRoleMapper) : Mapper<UserEntity, User> {
 
     override fun toDomain(entity: UserEntity): User {
         return User(

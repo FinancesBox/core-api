@@ -1,7 +1,7 @@
 package com.financesbox.shared.infrastructure.persistence.mapper
 
 import com.financesbox.shared.domain.model.DomainModel
-import com.financesbox.shared.infrastructure.persistence.jpa.entity.BaseEntity
+import com.financesbox.shared.infrastructure.persistence.entity.BaseEntity
 
 interface Mapper<E : BaseEntity, D : DomainModel> {
 

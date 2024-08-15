@@ -1,8 +1,8 @@
-package com.financesbox.usermgmt.infrastructure.persistence.jpa.user.mapper
+package com.financesbox.usermgmt.infrastructure.persistence.user.mapper
 
 import com.financesbox.shared.infrastructure.persistence.mapper.Mapper
 import com.financesbox.usermgmt.domain.user.model.UserRole
-import com.financesbox.usermgmt.infrastructure.persistence.jpa.user.entity.UserRoleEntity
+import com.financesbox.usermgmt.infrastructure.persistence.user.entity.UserRoleEntity
 import jakarta.inject.Singleton
 
 @Singleton

@@ -6,14 +6,13 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.context.annotation.Requires
 import io.micronaut.core.reflect.GenericTypeUtils
 import jakarta.annotation.PostConstruct
-import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 @Singleton
 @Requires(property = "event.implementation", value = "MICRONAUT")
-class MicronautEventBroker(@Inject private val context: ApplicationContext) {
+class MicronautEventBroker(private val context: ApplicationContext) {
 
     private val registry: MutableMap<Class<Event>, MutableList<EventListener<*>>> = mutableMapOf()
 

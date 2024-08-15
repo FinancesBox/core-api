@@ -6,14 +6,13 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.micronaut.context.annotation.Property
 import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
-import jakarta.inject.Inject
 import kotlin.time.measureTime
 
 @MicronautTest
 @Property(name = "command.implementation", value = "MICRONAUT")
 @Property(name = "micronaut.command.timeoutInMillis", value = "1000")
 class MicronautCommandBusTest(
-    @Inject private val commandBus: MicronautCommandBus
+    private val commandBus: MicronautCommandBus
 ) : FunSpec({
 
     test("should execute asynchronously a command and return an event") {

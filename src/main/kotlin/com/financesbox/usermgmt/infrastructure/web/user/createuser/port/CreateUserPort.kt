@@ -1,9 +1,10 @@
 package com.financesbox.usermgmt.infrastructure.web.user.createuser.port
 
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserRequestModel
+import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserResponseModel
 
 interface CreateUserPort {
 
-    suspend fun createUser(request: CreateUserRequestModel)
+    fun createUser(request: CreateUserRequestModel): CreateUserResponseModel
 
 }

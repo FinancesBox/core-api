@@ -8,12 +8,11 @@ import io.micronaut.context.annotation.Property
 import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
 import io.mockk.*
-import jakarta.inject.Inject
 
 @MicronautTest
 @Property(name = "event.implementation", value = "MICRONAUT")
 class MicronautEventBusSpec(
-    @Inject private val eventBus: EventBus, @Inject private val service: FakeService
+    private val eventBus: EventBus, private val service: FakeService
 ) : FunSpec({
 
     test("should publish an event and call a service") {

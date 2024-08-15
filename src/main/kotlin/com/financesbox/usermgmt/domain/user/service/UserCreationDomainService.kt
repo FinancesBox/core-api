@@ -1,6 +1,6 @@
 package com.financesbox.usermgmt.domain.user.service
 
-import com.financesbox.usermgmt.domain.user.exception.UserAlreadyExistsDomainException
+import com.financesbox.usermgmt.domain.user.exception.UserAlreadyExistsDomainExceptionUnsupported
 import com.financesbox.usermgmt.domain.user.exception.UserRolesMismatchDomainException
 import com.financesbox.usermgmt.domain.user.model.User
 import com.financesbox.usermgmt.domain.user.repository.UserRepository
@@ -22,7 +22,7 @@ class UserCreationDomainService(
         name: String, email: String, password: String, roles: List<String>
     ): User {
         require(userRepository.findByName(name).isEmpty && userRepository.findByEmail(email).isEmpty) {
-            throw UserAlreadyExistsDomainException()
+            throw UserAlreadyExistsDomainExceptionUnsupported()
         }
         val rolesFound = userRoleRepository.findByNameList(roles)
         require(rolesFound.size == roles.size) {

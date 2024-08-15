@@ -19,6 +19,6 @@ interface CommandBus {
      * @param command The command to execute.
      * @return The event published.
      */
-    suspend fun <E : Event, C : Command<E>> syncExecute(command: C): E
+    fun <E : Event, C : Command<E>> syncExecute(command: C): E
 
 }

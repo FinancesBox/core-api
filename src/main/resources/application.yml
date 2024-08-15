@@ -41,6 +41,9 @@ jpa:
         hbm2ddl:
           auto: none
 
+jackson:
+  serializationInclusion: ALWAYS
+
 command.implementation: ${COMMAND_IMPLEMENTATION:MICRONAUT}
 query.implementation: ${QUERY_IMPLEMENTATION:MICRONAUT}
 event.implementation: ${EVENT_IMPLEMENTATION:MICRONAUT}

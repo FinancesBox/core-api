@@ -1,12 +1,13 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.9.23"
-    id("org.jetbrains.kotlin.plugin.allopen") version "1.9.23"
-    id("org.jetbrains.kotlin.plugin.jpa") version "1.9.23"
-    id("com.google.devtools.ksp") version "1.9.23-1.0.19"
+    id("org.jetbrains.kotlin.jvm") version "2.0.10"
+    id("org.jetbrains.kotlin.plugin.allopen") version "2.0.10"
+    id("org.jetbrains.kotlin.plugin.jpa") version "2.0.10"
+    id("com.google.devtools.ksp") version "2.0.10-1.0.24"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.4.2"
     id("io.micronaut.test-resources") version "4.4.2"
     id("io.micronaut.aot") version "4.4.2"
+    id("org.jetbrains.kotlinx.kover") version "0.8.3"
 }
 
 version = "0.1"
@@ -35,6 +36,7 @@ dependencies {
     implementation("io.micronaut.security:micronaut-security-jwt")
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     implementation("io.micronaut.sql:micronaut-hibernate-jpa")
+    implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("ch.qos.logback:logback-classic")
     implementation("jakarta.annotation:jakarta.annotation-api")
@@ -47,6 +49,7 @@ dependencies {
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.yaml:snakeyaml")
+    testImplementation("io.github.serpro69:kotlin-faker:1.14.0")
     testImplementation("org.awaitility:awaitility-kotlin:4.2.1")
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:testcontainers")
@@ -54,14 +57,13 @@ dependencies {
     aotPlugins("io.micronaut.security:micronaut-security-aot")
 }
 
-
 application {
     mainClass = "com.financesbox.shared.infrastructure.configuration.micronaut.api.ApplicationKt"
 }
+
 java {
     sourceCompatibility = JavaVersion.toVersion("21")
 }
-
 
 graalvmNative.toolchainDetection = false
 
@@ -87,9 +89,21 @@ micronaut {
     }
 }
 
+kover {
+    reports {
+        filters {
+            excludes {
+                classes("com.financesbox.shared.infrastructure.configuration.micronaut.api.ApplicationKt")
+            }
+        }
+        verify {
+            rule {
+                minBound(30)
+            }
+        }
+    }
+}
 
 tasks.named<io.micronaut.gradle.docker.NativeImageDockerfile>("dockerfileNative") {
     jdkVersion = "21"
 }
-
-

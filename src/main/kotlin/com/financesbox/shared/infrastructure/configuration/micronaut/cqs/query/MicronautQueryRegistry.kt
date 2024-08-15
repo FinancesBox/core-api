@@ -7,12 +7,11 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.context.annotation.Requires
 import io.micronaut.core.reflect.GenericTypeUtils
 import jakarta.annotation.PostConstruct
-import jakarta.inject.Inject
 import jakarta.inject.Singleton
 
 @Singleton
 @Requires(property = "query.implementation", value = "MICRONAUT")
-class MicronautQueryRegistry(@Inject private val context: ApplicationContext) {
+class MicronautQueryRegistry(private val context: ApplicationContext) {
 
     private val registry: MutableMap<Class<Query<*>>, QueryHandler<*, *>> = mutableMapOf()
 

@@ -5,7 +5,6 @@ import com.financesbox.shared.application.cqs.query.QueryBus
 import com.financesbox.shared.application.cqs.query.QueryModel
 import io.micronaut.context.annotation.Requires
 import io.micronaut.context.annotation.Value
-import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import kotlinx.coroutines.*
 
@@ -14,7 +13,7 @@ import kotlinx.coroutines.*
 @Requires(property = "query.implementation", value = "MICRONAUT")
 class MicronautQueryBus(
     @Value("\${micronaut.query.timeoutInMillis}") private val timeout: Long,
-    @Inject private val registry: MicronautQueryRegistry
+    private val registry: MicronautQueryRegistry
 ) : QueryBus {
 
     override fun <E : QueryModel, C : Query<E>> asyncExecute(query: C): Deferred<E> = GlobalScope.async {

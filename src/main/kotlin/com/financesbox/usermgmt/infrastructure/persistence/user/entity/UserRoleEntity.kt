@@ -1,6 +1,6 @@
-package com.financesbox.usermgmt.infrastructure.persistence.jpa.user.entity
+package com.financesbox.usermgmt.infrastructure.persistence.user.entity
 
-import com.financesbox.shared.infrastructure.persistence.jpa.entity.BaseEntity
+import com.financesbox.shared.infrastructure.persistence.entity.BaseEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id

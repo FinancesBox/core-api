@@ -1,4 +1,4 @@
-package com.financesbox.shared.infrastructure.persistence.jpa.entity
+package com.financesbox.shared.infrastructure.persistence.entity
 
 import java.time.Instant
 
