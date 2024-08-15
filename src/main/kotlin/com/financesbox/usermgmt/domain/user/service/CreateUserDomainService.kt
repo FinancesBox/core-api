@@ -8,6 +8,7 @@ import com.financesbox.usermgmt.domain.user.repository.UserRepository
 import com.financesbox.usermgmt.domain.user.repository.UserRoleRepository
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
+import jakarta.validation.Valid
 import java.time.Instant
 import java.util.*
 
@@ -23,7 +24,7 @@ class CreateUserDomainService : DomainService<CreateUserDTO, User> {
     /**
      * Validates and creates a user
      */
-    override fun execute(dto: CreateUserDTO): User {
+    override fun execute(@Valid dto: CreateUserDTO): User {
         require(userRepository.findByName(dto.name).isEmpty && userRepository.findByEmail(dto.email).isEmpty) {
             throw UserAlreadyExistsDomainExceptionUnsupported()
         }
