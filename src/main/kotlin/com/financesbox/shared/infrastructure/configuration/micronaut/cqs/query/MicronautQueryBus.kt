@@ -20,9 +20,11 @@ class MicronautQueryBus(
         registry.getHandler(query).handle(query)
     }
 
-    override suspend fun <E : QueryModel, C : Query<E>> syncExecute(query: C): E {
-        return withTimeout(timeout) {
-            asyncExecute(query).await()
+    override fun <E : QueryModel, C : Query<E>> syncExecute(query: C): E {
+        return runBlocking {
+            withTimeout(timeout) {
+                asyncExecute(query).await()
+            }
         }
     }
 

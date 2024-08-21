@@ -4,8 +4,8 @@ import com.financesbox.shared.application.cqs.command.CommandHandler
 import com.financesbox.shared.application.event.EventBus
 import com.financesbox.usermgmt.app.security.encryption.service.PasswordEncryptionService
 import com.financesbox.usermgmt.domain.user.event.UserCreatedEvent
-import com.financesbox.usermgmt.domain.user.service.CreateUserDTO
-import com.financesbox.usermgmt.domain.user.service.CreateUserDomainService
+import com.financesbox.usermgmt.domain.user.service.createuser.CreateUserDTO
+import com.financesbox.usermgmt.domain.user.service.createuser.CreateUserDomainService
 import jakarta.inject.Singleton
 import jakarta.validation.Valid
 

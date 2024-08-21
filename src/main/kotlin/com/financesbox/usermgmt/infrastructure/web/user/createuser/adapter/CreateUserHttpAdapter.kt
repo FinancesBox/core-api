@@ -1,7 +1,9 @@
 package com.financesbox.usermgmt.infrastructure.web.user.createuser.adapter
 
 import com.financesbox.shared.application.cqs.command.CommandBus
+import com.financesbox.shared.infrastructure.configuration.micronaut.api.API.API_V1_URI
 import com.financesbox.usermgmt.app.user.command.createuser.CreateUserCommand
+import com.financesbox.usermgmt.infrastructure.web.shared.api.UserManagementAPI.SWAGGER_TAG
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserRequestModel
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserResponseModel
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.port.CreateUserPort
@@ -18,8 +20,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 
-@Controller("/api/v1")
-@Tag(name = "Users")
+@Controller(API_V1_URI)
+@Tag(name = SWAGGER_TAG)
 class CreateUserHttpAdapter(private val commandBus: CommandBus) : CreateUserPort {
 
     @Post("/users")

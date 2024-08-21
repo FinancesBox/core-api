@@ -18,6 +18,6 @@ interface QueryBus {
      * @param query The query to execute.
      * @return The query model returned.
      */
-    suspend fun <R : QueryModel, C : Query<R>> syncExecute(query: C): R
+    fun <R : QueryModel, C : Query<R>> syncExecute(query: C): R
 
 }

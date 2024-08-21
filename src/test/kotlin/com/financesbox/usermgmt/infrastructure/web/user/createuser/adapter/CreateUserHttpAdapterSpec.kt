@@ -2,6 +2,7 @@ package com.financesbox.usermgmt.infrastructure.web.user.createuser.adapter
 
 import com.financesbox.shared.application.cqs.command.CommandBus
 import com.financesbox.shared.domain.exception.UnsupportedOperationDomainException
+import com.financesbox.shared.infrastructure.configuration.micronaut.api.API
 import com.financesbox.usermgmt.app.user.command.createuser.CreateUserCommand
 import com.financesbox.usermgmt.domain.user.event.UserCreatedEvent
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserRequestModel
@@ -26,7 +27,7 @@ import java.util.*
 
 @MicronautTest
 class CreateUserHttpAdapterSpec(
-    @Client("/api/v1") private val httpClient: HttpClient, private val commandBus: CommandBus
+    @Client(API.API_V1_URI) private val httpClient: HttpClient, private val commandBus: CommandBus
 ) : FunSpec({
 
     val faker = Faker()

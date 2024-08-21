@@ -1,4 +1,4 @@
-package com.financesbox.usermgmt.domain.user.service
+package com.financesbox.usermgmt.domain.user.service.createuser
 
 import io.micronaut.core.annotation.Introspected
 import jakarta.validation.constraints.*

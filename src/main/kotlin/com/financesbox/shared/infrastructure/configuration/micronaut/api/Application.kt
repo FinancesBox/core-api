@@ -16,7 +16,9 @@ import org.slf4j.bridge.SLF4JBridgeHandler
         contact = Contact(url = "https://github.com/romanovich23", name = "Javier", email = "javier.rmgz@gmail.com")
     )
 )
-object Api
+object API {
+    const val API_V1_URI = "/api/v1"
+}
 
 fun main(args: Array<String>) {
     // Bridge JUL to Slf4j

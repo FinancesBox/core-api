@@ -1,4 +1,4 @@
-package com.financesbox.usermgmt.domain.user.service
+package com.financesbox.usermgmt.domain.user.service.createuser
 
 import com.financesbox.shared.domain.service.DomainService
 import com.financesbox.usermgmt.domain.user.exception.UserAlreadyExistsDomainExceptionUnsupported

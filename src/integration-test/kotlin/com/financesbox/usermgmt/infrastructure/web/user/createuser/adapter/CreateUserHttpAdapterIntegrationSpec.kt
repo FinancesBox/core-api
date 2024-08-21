@@ -1,5 +1,6 @@
 package com.financesbox.usermgmt.infrastructure.web.user.createuser.adapter
 
+import com.financesbox.shared.infrastructure.configuration.micronaut.api.API
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserRequestModel
 import com.financesbox.usermgmt.infrastructure.web.user.createuser.model.CreateUserResponseModel
 import io.github.serpro69.kfaker.Faker
@@ -14,7 +15,7 @@ import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
 import kotlin.random.Random
 
 @MicronautTest
-class CreateUserHttpAdapterIntegrationSpec(@Client("/api/v1") private val httpClient: HttpClient) : FeatureSpec({
+class CreateUserHttpAdapterIntegrationSpec(@Client(API.API_V1_URI) private val httpClient: HttpClient) : FeatureSpec({
 
     feature("user creation") {
         val faker = Faker()

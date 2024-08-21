@@ -6,7 +6,7 @@ import com.financesbox.usermgmt.app.security.encryption.service.PasswordEncrypti
 import com.financesbox.usermgmt.domain.user.event.UserCreatedEvent
 import com.financesbox.usermgmt.domain.user.model.User
 import com.financesbox.usermgmt.domain.user.model.UserRole
-import com.financesbox.usermgmt.domain.user.service.CreateUserDomainService
+import com.financesbox.usermgmt.domain.user.service.createuser.CreateUserDomainService
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.micronaut.test.annotation.MockBean
