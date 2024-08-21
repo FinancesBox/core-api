@@ -4,7 +4,7 @@ import com.financesbox.shared.domain.repository.DomainRepository
 import com.financesbox.usermgmt.domain.user.model.User
 import java.util.*
 
-interface UserRepository : DomainRepository<User> {
+interface UserRepository : DomainRepository<User, UUID> {
 
     fun findByName(name: String): Optional<User>
 

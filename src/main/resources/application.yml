@@ -20,6 +20,8 @@ micronaut:
               secret: ${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}
   command:
     timeoutInMillis: ${MICRONAUT_COMMAND_TIMEOUT_IN_MILLIS:15000}
+  query:
+    timeoutInMillis: ${MICRONAUT_QUERY_TIMEOUT_IN_MILLIS:15000}
 
 datasources:
   default:
