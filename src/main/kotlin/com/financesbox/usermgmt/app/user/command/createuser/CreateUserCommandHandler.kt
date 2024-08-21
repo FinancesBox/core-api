@@ -13,7 +13,7 @@ import jakarta.validation.Valid
 class CreateUserCommandHandler(
     private val domainService: CreateUserDomainService,
     private val eventBus: EventBus,
-    private val encryptionService: PasswordEncryptionService
+    private val encryptionService: PasswordEncryptionService,
 ) : CommandHandler<CreateUserCommand, UserCreatedEvent> {
 
     override suspend fun handle(@Valid command: CreateUserCommand): UserCreatedEvent {

@@ -12,7 +12,7 @@ import kotlin.time.measureTime
 @Property(name = "command.implementation", value = "MICRONAUT")
 @Property(name = "micronaut.command.timeoutInMillis", value = "1000")
 class MicronautCommandBusTest(
-    private val commandBus: MicronautCommandBus
+    private val commandBus: MicronautCommandBus,
 ) : FunSpec({
 
     test("should execute asynchronously a command and return an event") {

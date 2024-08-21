@@ -23,9 +23,8 @@ import java.util.*
 class GetUserDomainServiceSpec(
     private val domainService: GetUserDomainService,
     private val userRepository: UserRepository,
+    private val faker: Faker,
 ) : FunSpec({
-
-    val faker = Faker()
 
     test("execute should retrieve an user when a id is given") {
         val repositoryMocked = getMock(userRepository)

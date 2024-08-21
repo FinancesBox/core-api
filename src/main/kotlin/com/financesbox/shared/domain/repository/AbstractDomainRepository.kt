@@ -8,7 +8,7 @@ import java.util.*
 
 abstract class AbstractDomainRepository<E : BaseEntity, D : DomainModel, ID>(
     private val mapper: Mapper<E, D>,
-    private val repository: JpaRepository<E, ID>
+    private val repository: JpaRepository<E, ID>,
 ) :
     DomainRepository<D, ID> {
 

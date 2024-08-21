@@ -15,10 +15,12 @@ import io.micronaut.test.extensions.kotest5.annotation.MicronautTest
 import kotlin.random.Random
 
 @MicronautTest
-class CreateUserHttpAdapterIntegrationSpec(@Client(API.API_V1_URI) private val httpClient: HttpClient) : FeatureSpec({
+class CreateUserHttpAdapterIntegrationSpec(
+    @Client(API.API_V1_URI) private val httpClient: HttpClient,
+    private val faker: Faker,
+) : FeatureSpec({
 
     feature("user creation") {
-        val faker = Faker()
 
         fun generatePassword(length: Int = 12): String {
             val upperCaseLetters = ('A'..'Z').toList()

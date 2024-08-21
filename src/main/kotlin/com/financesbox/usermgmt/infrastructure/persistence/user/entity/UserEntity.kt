@@ -18,5 +18,5 @@ data class UserEntity(
         inverseJoinColumns = [JoinColumn(name = "role_id")]
     ) val roles: List<UserRoleEntity>,
     @Column(name = "created_at", nullable = false) override val createdAt: Instant,
-    @Column(name = "updated_at", nullable = false) override val updatedAt: Instant
+    @Column(name = "updated_at", nullable = false) override val updatedAt: Instant,
 ) : BaseEntity

@@ -7,7 +7,7 @@ import jakarta.inject.Singleton
 @Singleton
 class SecondFakeEventListener(
     @Inject
-    private val service: FakeService
+    private val service: FakeService,
 ) : EventListener<FakeEvent> {
 
     override fun receive(event: FakeEvent) {

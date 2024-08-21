@@ -25,7 +25,7 @@ class HttpExceptionHandler : ExceptionHandler<DomainException, HttpResponse<Http
                 (isClassOrSubclassOf(
                     UnsupportedOperationDomainException::class, exception::class
                 )),
-                -> HttpStatus.CONFLICT
+                    -> HttpStatus.CONFLICT
 
                 (isClassOrSubclassOf(EntityNotFoundDomainException::class, exception::class)) -> HttpStatus.NOT_FOUND
                 else -> HttpStatus.INTERNAL_SERVER_ERROR

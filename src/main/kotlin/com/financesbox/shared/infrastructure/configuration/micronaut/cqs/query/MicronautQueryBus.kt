@@ -13,7 +13,7 @@ import kotlinx.coroutines.*
 @Requires(property = "query.implementation", value = "MICRONAUT")
 class MicronautQueryBus(
     @Value("\${micronaut.query.timeoutInMillis}") private val timeout: Long,
-    private val registry: MicronautQueryRegistry
+    private val registry: MicronautQueryRegistry,
 ) : QueryBus {
 
     override fun <E : QueryModel, C : Query<E>> asyncExecute(query: C): Deferred<E> = GlobalScope.async {

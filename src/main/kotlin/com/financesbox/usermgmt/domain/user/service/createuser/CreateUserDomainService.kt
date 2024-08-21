@@ -6,20 +6,16 @@ import com.financesbox.usermgmt.domain.user.exception.UserRolesMismatchDomainExc
 import com.financesbox.usermgmt.domain.user.model.User
 import com.financesbox.usermgmt.domain.user.repository.UserRepository
 import com.financesbox.usermgmt.domain.user.repository.UserRoleRepository
-import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import jakarta.validation.Valid
 import java.time.Instant
 import java.util.*
 
 @Singleton
-class CreateUserDomainService : DomainService<CreateUserDTO, User> {
-
-    @Inject
-    private lateinit var userRepository: UserRepository
-
-    @Inject
-    private lateinit var userRoleRepository: UserRoleRepository
+class CreateUserDomainService(
+    private val userRepository: UserRepository,
+    private val userRoleRepository: UserRoleRepository,
+) : DomainService<CreateUserDTO, User> {
 
     /**
      * Validates and creates a user

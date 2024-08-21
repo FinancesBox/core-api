@@ -27,10 +27,10 @@ import java.util.*
 
 @MicronautTest
 class GetUserHttpAdapterSpec(
-    @Client(API.API_V1_URI) private val httpClient: HttpClient, private val queryBus: QueryBus,
+    @Client(API.API_V1_URI) private val httpClient: HttpClient,
+    private val queryBus: QueryBus,
+    private val faker: Faker,
 ) : FunSpec({
-
-    val faker = Faker()
 
     test("getUser should return 200 status and retrieve an user when the query is executed") {
         val queryBusMocked = getMock(queryBus)

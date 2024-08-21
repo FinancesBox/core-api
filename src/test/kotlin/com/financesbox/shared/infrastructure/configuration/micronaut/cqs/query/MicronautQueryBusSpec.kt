@@ -12,7 +12,7 @@ import kotlin.time.measureTime
 @Property(name = "query.implementation", value = "MICRONAUT")
 @Property(name = "micronaut.query.timeoutInMillis", value = "1000")
 class MicronautQueryBusSpec(
-    private val commandBus: MicronautQueryBus
+    private val commandBus: MicronautQueryBus,
 ) : FunSpec({
 
     test("should execute asynchronously a query and return an event") {

@@ -20,10 +20,12 @@ import java.time.Instant
 import java.util.*
 
 @MicronautTest
-class GetUserQueryHandlerSpec(private val queryBus: QueryBus, private val domainService: GetUserDomainService) :
+class GetUserQueryHandlerSpec(
+    private val queryBus: QueryBus,
+    private val domainService: GetUserDomainService,
+    private val faker: Faker,
+) :
     FunSpec({
-
-        val faker = Faker()
 
         test("handle should retrieve an user") {
             val domainServiceMocked = getMock(domainService)

@@ -27,10 +27,10 @@ import java.util.*
 
 @MicronautTest
 class CreateUserHttpAdapterSpec(
-    @Client(API.API_V1_URI) private val httpClient: HttpClient, private val commandBus: CommandBus
+    @Client(API.API_V1_URI) private val httpClient: HttpClient,
+    private val commandBus: CommandBus,
+    private val faker: Faker,
 ) : FunSpec({
-
-    val faker = Faker()
     val requestModel = CreateUserRequestModel(
         name = "${faker.name.firstName().lowercase()}.${faker.name.lastName().lowercase()}${faker.random.nextInt()}",
         email = faker.internet.email(),

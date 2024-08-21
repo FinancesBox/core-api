@@ -7,5 +7,5 @@ import java.util.*
 
 @Serdeable
 class UserQueryModel(
-    val id: UUID, val name: String, val email: String, val roles: List<String>, val createdAt: Instant
+    val id: UUID, val name: String, val email: String, val roles: List<String>, val createdAt: Instant,
 ) : QueryModel()

@@ -12,7 +12,7 @@ import io.mockk.*
 @MicronautTest
 @Property(name = "event.implementation", value = "MICRONAUT")
 class MicronautEventBusSpec(
-    private val eventBus: EventBus, private val service: FakeService
+    private val eventBus: EventBus, private val service: FakeService,
 ) : FunSpec({
 
     test("should publish an event and call a service") {

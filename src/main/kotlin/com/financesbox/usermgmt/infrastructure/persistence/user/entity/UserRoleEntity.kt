@@ -13,5 +13,5 @@ class UserRoleEntity(
     @Id val id: Int,
     @Column(name = "name", nullable = false) val name: String,
     @Column(name = "created_at", nullable = false) override val createdAt: Instant,
-    @Column(name = "updated_at", nullable = false) override val updatedAt: Instant
+    @Column(name = "updated_at", nullable = false) override val updatedAt: Instant,
 ) : BaseEntity

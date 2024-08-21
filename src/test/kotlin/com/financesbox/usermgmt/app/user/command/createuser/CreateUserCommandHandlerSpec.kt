@@ -24,7 +24,7 @@ class CreateUserCommandHandlerSpec(
     private val eventBus: EventBus,
     private val commandBus: CommandBus,
     private val domainService: CreateUserDomainService,
-    private val encryptionService: PasswordEncryptionService
+    private val encryptionService: PasswordEncryptionService,
 ) : FunSpec({
 
     test("should create user and publish event") {

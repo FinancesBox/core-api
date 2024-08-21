@@ -17,7 +17,7 @@ import kotlin.reflect.full.memberProperties
 class MicronautCommandBus(
     @Value("\${micronaut.command.timeoutInMillis}") private val timeout: Long,
     private val registry: MicronautCommandRegistry,
-    private val logger: Logger = LoggerFactory.getLogger(MicronautCommandBus::class.java)
+    private val logger: Logger = LoggerFactory.getLogger(MicronautCommandBus::class.java),
 ) : CommandBus {
 
     override fun <E : Event, C : Command<E>> asyncExecute(command: C): Deferred<E> = GlobalScope.async {

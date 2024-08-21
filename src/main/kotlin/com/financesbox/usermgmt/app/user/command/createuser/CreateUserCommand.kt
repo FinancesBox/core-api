@@ -16,5 +16,5 @@ class CreateUserCommand(
         max = 20,
         message = "Password must be between 8 and 20 characters long"
     ) val password: String,
-    @NotEmpty val roles: List<String>
+    @NotEmpty val roles: List<String>,
 ) : Command<UserCreatedEvent>()

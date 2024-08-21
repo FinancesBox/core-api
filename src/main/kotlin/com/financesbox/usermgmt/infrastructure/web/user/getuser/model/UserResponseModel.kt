@@ -10,5 +10,5 @@ data class UserResponseModel(
     val name: String,
     val email: String,
     val roles: List<String>,
-    val createdAt: Instant
+    val createdAt: Instant,
 )
